@@ -1,9 +1,10 @@
-package com.hibernate.example;
+package com.hibernate.example.student;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class ReadStudent {
+public class PrimaryKey {
 
     public static void main(String[] args) {
 
@@ -18,25 +19,17 @@ public class ReadStudent {
 
         try {
             System.out.println("Creating new student object...");
-            Student newStudent = new Student("Zoe", "Willson", "zoe@mail.com");
+            Student newStudent1 = new Student("John", "Smith", "johnsmith@mail.com");
+            Student newStudent2 = new Student("Jan", "Nowak", "jannowak@mail.com");
+            Student newStudent3 = new Student("John", "Doe", "jonedoe@mail.com");
 
             session.beginTransaction();
 
             System.out.println("Saving the student...");
-            System.out.println(newStudent);
-            session.save(newStudent);
-            session.getTransaction().commit();
+            session.save(newStudent1);
+            session.save(newStudent2);
+            session.save(newStudent3);
 
-            // get the student
-            System.out.println("Saved student. Generated id: " + newStudent.getId());
-
-            session = factory.getCurrentSession();
-            session.beginTransaction();
-
-            System.out.println("Getting student with id: " + newStudent.getId());
-            Student myStudent = session.get(Student.class, newStudent.getId());
-
-            System.out.println("Get complete: " + myStudent );
             session.getTransaction().commit();
 
             System.out.println("Done.");

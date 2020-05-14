@@ -1,4 +1,4 @@
-package com.hibernate.example;
+package com.hibernate.example.student;
 
 import javax.persistence.*;
 
